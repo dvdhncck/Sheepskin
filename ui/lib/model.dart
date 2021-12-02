@@ -1,4 +1,4 @@
-import 'package:sheepskin/sheepstate.dart';
+import 'sheepstate.dart';
 
 class ListyEnum {
   const ListyEnum();

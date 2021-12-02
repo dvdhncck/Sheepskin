@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sheepskin/sheepskin.dart';
-
-import "folder_picker.dart";
-import "scheduler_options.dart";
-import "message_log_view.dart";
-
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+
+import 'sheepskin.dart';
+import 'folder_picker.dart';
+import 'scheduler_options.dart';
+import 'message_log_view.dart';
+
 
 /*
 void _sanityCheck() async {

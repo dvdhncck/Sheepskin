@@ -2,8 +2,8 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sheepskin/sheepstate.dart';
 
+import 'sheepstate.dart';
 import 'sheepskin.dart';
 import 'tyler.dart';
 

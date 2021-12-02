@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:tuple/tuple.dart';
 import 'dart:math';
 
@@ -7,15 +6,15 @@ class Tile {
   final int w;
   final int h;
   late final int id;
-  late final aspect;
+  late final double aspect;
 
   static int nextId = 1;
 
   static Tile NotTile = new Tile("NotTile",0,0);
 
   Tile(this.path, this.w, this.h) {
-    this.id = nextId++;
-    this.aspect = w.toDouble() / h.toDouble();
+    id = nextId++;
+    aspect = w.toDouble() / h.toDouble();
   }
 
   Tile.of(int w, int h) : this("${w}x$h", w, h);

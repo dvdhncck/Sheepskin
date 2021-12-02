@@ -1,7 +1,8 @@
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
-import 'package:sheepskin/sheepstate.dart';
-import 'package:sheepskin/wallpaperer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'sheepstate.dart';
+import 'wallpaperer.dart';
 
 class MrBackground {
   static void bookAlarmCall(SheepState sheepState) {

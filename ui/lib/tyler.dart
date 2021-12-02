@@ -1,14 +1,15 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
-import 'package:image/image.dart';
-import 'package:local_image_provider/local_image.dart';
 
 import 'package:mime/mime.dart';
 
-import 'layabout.dart';
+import 'package:image/image.dart';
+import 'package:local_image_provider/local_image.dart';
 import 'package:local_image_provider/local_image_provider.dart';
 import 'package:local_image_provider/local_album.dart';
 import 'package:local_image_provider_platform_interface/local_album_type.dart';
+
+import 'layabout.dart';
 
 class Tyler {
   Map<String, Tile> tileCache = new Map();
@@ -81,26 +82,26 @@ class Tyler {
 
   Future<Tile> _scanImage(File entity) async {
     Image? image = decodeImage(entity.readAsBytesSync());
-    return new Tile(
+    return Tile(
         entity.path, (image?.width ?? 0).floor(), (image?.height ?? 0).floor());
   }
 
   void render(
       int tileDensity, int targetWidth, int targetHeight, File destination) {
-    var layabout = new Layabout(tileDensity, targetWidth, targetHeight);
+    var layabout = Layabout(tileDensity, targetWidth, targetHeight);
 
     var tiles = tileCache.values.toList(growable: false);
     var bins = layabout.getBins(2, tiles);
     List<PlacedTile> layout = layabout.getLayout(bins);
 
-    var image = new Image(targetWidth, targetHeight);
+    var image = Image(targetWidth, targetHeight);
 
     for (var placedTile in layout) {
       double deltaY = placedTile.tile.h / placedTile.scaledH.toDouble();
       double deltaX = placedTile.tile.w / placedTile.scaledW.toDouble();
 
       var tileImage =
-          decodeImage(new File(placedTile.tile.path).readAsBytesSync());
+          decodeImage(File(placedTile.tile.path).readAsBytesSync());
       if (tileImage != null) {
         int destY = placedTile.y;
         double srcY = .0;
@@ -119,7 +120,7 @@ class Tyler {
       }
     }
 
-    destination.writeAsBytesSync(new JpegEncoder().encodeImage(image));
+    destination.writeAsBytesSync(JpegEncoder().encodeImage(image));
     print("written ${targetWidth}x$targetHeight image to ${destination.path}");
   }
 }

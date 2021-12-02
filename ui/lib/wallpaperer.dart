@@ -7,21 +7,20 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
-
-import 'package:sheepskin/sheepstate.dart';
-import 'package:sheepskin/model.dart';
-import 'package:sheepskin/tyler.dart';
-
 import 'package:wallpaper/wallpaper.dart';
 
+import 'sheepstate.dart';
+import 'model.dart';
+import 'tyler.dart';
+
 class Wallpaperer {
-  static const MethodChannel _channel = const MethodChannel('sheepskin');
+  static const MethodChannel _channel = MethodChannel('sheepskin');
 
   static const int HOME_SCREEN = 1;
   static const int LOCK_SCREEN = 2;
   static const int BOTH_SCREENS = 3;
 
-  static final _random = new Random(DateTime.now().millisecondsSinceEpoch);
+  static final _random = Random(DateTime.now().millisecondsSinceEpoch);
 
   // /// Function takes input file's path & location choice
   // static Future<String> setWallpaperFromFile(
@@ -76,11 +75,11 @@ class Wallpaperer {
   static Future<List<File>> _generateImages(
       double width, double height,
       SheepState sheepState, int count) async {
-    if (sheepState.paths.length == 0) {
+    if (sheepState.paths.isEmpty) {
       throw Exception("No paths have been added");
     }
 
-    var tyler = new Tyler(sheepState.tileCache);
+    var tyler = Tyler(sheepState.tileCache);
     List<File> result = [];
 
     //var directory = await getApplicationDocumentsDirectory();
@@ -88,7 +87,7 @@ class Wallpaperer {
 
     for (int i = 0; i < count; i++) {
       // note that the .jpeg is vital for package:wallpaper/wallpaper.dart to work
-      var file = new File(path.join(directory!.path, "background" + i.toString() + ".jpeg"));
+      var file = File(path.join(directory!.path, "background" + i.toString() + ".jpeg"));
       tyler.render(3, width.floor(), height.floor(), file);
       result.add(file);
     }

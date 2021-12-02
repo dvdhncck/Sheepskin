@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sheepskin/sheepstate.dart';
 
+import 'sheepstate.dart';
 import 'model.dart';
 import 'tyler.dart';
 import 'wallpaperer.dart';

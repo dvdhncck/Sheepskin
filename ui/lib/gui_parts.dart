@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sheepskin/sheepstate.dart';
-
+import 'sheepstate.dart';
 import 'model.dart';
 
 const bendy = Radius.circular(12.0);
